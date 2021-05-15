@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmicDeluxeAdventure", "CosmicDeluxeAdventure\CosmicDeluxeAdventure.csproj", "{A364D6FC-A135-4C02-B79B-9D8FC6085446}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A364D6FC-A135-4C02-B79B-9D8FC6085446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A364D6FC-A135-4C02-B79B-9D8FC6085446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A364D6FC-A135-4C02-B79B-9D8FC6085446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A364D6FC-A135-4C02-B79B-9D8FC6085446}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E3CA1E7-3339-4413-BB68-78A8B9F5FB6B}
+	EndGlobalSection
+EndGlobal
