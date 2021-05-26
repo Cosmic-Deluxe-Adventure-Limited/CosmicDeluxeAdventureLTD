@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+ import React from 'react';
 import { Jumbotron, Container, Alert, Form, Col, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
-export class Home extends Component {
-  static displayName = Home.name;
 
-  render () {
+const HomePage = () => {
+
     return (
       <div>
         <Jumbotron fluid>
@@ -47,4 +46,7 @@ export class Home extends Component {
       </div>
     );
   }
-}
+
+
+export default HomePage;
+
