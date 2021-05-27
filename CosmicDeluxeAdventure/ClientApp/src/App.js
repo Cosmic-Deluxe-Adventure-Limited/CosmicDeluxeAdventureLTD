@@ -1,27 +1,37 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { Trips } from './components/Trips';
-import { Counter } from './components/Counter';
-import Footer from '../src/components/Footer/Footer';
-import './custom.css'
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import Flights from './components/FlightsPage/Flights';
+import Packages from './components/PackagesPage/Packages';
+import Activities from './components/ActivitiesPage/Activities';
+import Deals from './components/DealsPage/Deals';
+import CustomerSupport from './components/CustomerSupportPage/CustomerSupport';
+import Trips from './components/TripsPage/TripsPage';
+import Home  from './components/HomeLandingPage/HomePage';
+import Footer from './components/FooterPage/Footer';
 
-export default class App extends Component {
-  static displayName = App.name;
 
-  render () {
-    return (
-      <>
-      <Layout>
+
+
+function App () {
+
+  return (
+          <>
+       <NavBar />
+       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/trips' component={Trips} />
-
+        <Route exact path='/Flights' component={Flights} />
+        <Route exact path='/Packages' component={Packages} />
+        <Route exact path='/Activities' component={Activities} />
+        <Route exact path='/Deals' component={Deals} />
+        <Route exact path='/CustomerSupport' component={CustomerSupport} />
+        <Route exact path='/Trips' component={Trips} />
+      </Switch>
      <Footer/>        
-      </Layout>
- 
       </>
-    );
-  }
+
+  )
+
 }
+export default App;
+
