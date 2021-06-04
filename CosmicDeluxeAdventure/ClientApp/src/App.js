@@ -18,6 +18,7 @@ function App () {
   return (
           <>
        <NavBar />
+       {/* <Home/> */}
        <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/Flights' component={Flights} />

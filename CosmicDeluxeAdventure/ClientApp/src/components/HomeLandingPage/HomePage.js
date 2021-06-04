@@ -1,9 +1,12 @@
  import React from 'react';
-import { Jumbotron, Container, Alert, Form, Col, Card, Button } from 'react-bootstrap';
+import { Jumbotron, Container, Alert, Form, Col, Card, Button, Row, Image, Nav, Link } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
-
-
+import Image1 from '../../assets/Images/image1.jpeg';
+import Image2 from '../../assets/Images/image2.jpeg';
+import Image3 from '../../assets/Images/image3.jpeg';
+import Image4 from '../../assets/Images/image4.jpeg';
+import '../HomeLandingPage/HomePage.scss';
 const HomePage = () => {
 
     return (
@@ -38,11 +41,31 @@ const HomePage = () => {
         </Col>
       </Form.Row>
       <br/>
-      <Button variant="primary">Search</Button>
+      <div className="d-flex justify-content-center">
+  <Button className="btn btn-default" variant="success"><Nav>Search</Nav></Button>
+</div>
+
+
 </Form>
 
 </Card>
-
+<Container>
+  <h2>Ideas for future travels</h2>
+  <Row>
+    <Col xs={4} md={3}>
+      <Image src={Image1} rounded />
+    </Col>
+    <Col xs={4} md={3}>
+      <Image src={Image2} rounded />
+    </Col>
+    <Col xs={4} md={3}>
+      <Image src={Image3} rounded />
+    </Col>
+    <Col xs={4} md={3}>
+      <Image src={Image4} rounded />
+    </Col>
+  </Row>
+</Container>
       </div>
     );
   }
