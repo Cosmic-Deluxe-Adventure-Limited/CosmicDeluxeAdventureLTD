@@ -1,5 +1,5 @@
  import React from 'react';
-import { Jumbotron, Container, Alert, Form, Col, Card, Button, Row, Image, Nav, Link } from 'react-bootstrap';
+import { Jumbotron, Container, Alert, Form, Col, Card, Button, Row, Image, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import Image1 from '../../assets/Images/image1.jpeg';
@@ -23,10 +23,10 @@ const HomePage = () => {
           </Alert>
           </Container>
         </Jumbotron>
-        <Card>
+        <Card className="search-container">
         <h1>Welcome Space Travelers!</h1>
         <br/>
-        <Form>
+        <Form className="search-form">
       <Form.Row>
         <Col xs={2}>
           <Form.Control placeholder="Leaving from..." />
@@ -44,7 +44,6 @@ const HomePage = () => {
       <div className="d-flex justify-content-center">
   <Button className="btn btn-default" variant="success"><Nav>Search</Nav></Button>
 </div>
-
 
 </Form>
 
