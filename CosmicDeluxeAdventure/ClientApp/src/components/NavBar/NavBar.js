@@ -28,7 +28,8 @@ const NavBar = () => {
             </Nav>
             <Nav>
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#signup">Sign up</Nav.Link> 
+              <Nav.Link href="/Signup">Sign up</Nav.Link> 
+
               | <Nav.Link href="#signin" onClick={handleShow}>Sign in ↓ </Nav.Link>
       <Modal
         show={show}
@@ -59,17 +60,15 @@ const NavBar = () => {
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Remember Me" />
         </Form.Group>
-{/*         
-          <Button variant="primary" type="submit">
-            Submit
-          </Button> */}
 </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Sign in
           </Button>
-          <Button variant="primary">Sign up</Button>
+          <Button href="/Signup" variant="secondary">
+            Sign up
+          </Button>
         </Modal.Footer>
       </Modal>
                 
