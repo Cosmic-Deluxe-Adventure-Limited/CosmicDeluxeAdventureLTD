@@ -6,7 +6,7 @@ import {
   faInstagram,
   faYelp
 } from '@fortawesome/free-brands-svg-icons';
-
+import '../FooterPage/Footer.scss';
 
 const Footer = () => {
   return (
