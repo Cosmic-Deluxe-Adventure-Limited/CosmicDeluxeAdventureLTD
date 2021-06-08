@@ -25,8 +25,6 @@ namespace CosmicDeluxeAdventure.Model
         TripStatus = (TripCondition)value;
       }
     }
-
-
     //Navigation Properties
     public List<UserInfo> UserInfo { get; set; }
     public List<Flight> Flights { get; set; }
