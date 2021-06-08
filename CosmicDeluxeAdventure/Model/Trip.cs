@@ -13,12 +13,35 @@ namespace CosmicDeluxeAdventure.Model
     public int UserID { get; set; }
     public int FlightID { get; set; }
     public DateTime Added { get; set; }
-    
-    //status enum
+    // #2 int value in and out of database
+    public int FlightStatus
+    {
+      get
+      {
+        return (int)this.TripStatus;
+      }
+      set
+      {
+        TripStatus = (TripCondition)value;
+      }
+    }
+
 
     //Navigation Properties
     public List<UserInfo> UserInfo { get; set; }
     public List<Flight> Flights { get; set; }
 
+  //Enum Method and definition
+
+  //#3 this will be what will be called when we need to use the enum
+    public TripCondition TripStatus { get; set; }
+  //#1 Enum Definition
+    public enum TripCondition
+  {
+    Saved = 1,
+    Booked = 2,
+    Completed = 3
+  }
   }
 }
+
