@@ -9,15 +9,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosmicDeluxeAdventure.Migrations
 {
     [DbContext(typeof(CADDbContext))]
-    [Migration("20210524204943_dataSeeding")]
-    partial class dataSeeding
+    [Migration("20210624173955_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CosmicDeluxeAdventure.Model.UserInfo", b =>
@@ -56,7 +56,7 @@ namespace CosmicDeluxeAdventure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("TABLENAME");
+                    b.ToTable("UserInfo");
 
                     b.HasData(
                         new
