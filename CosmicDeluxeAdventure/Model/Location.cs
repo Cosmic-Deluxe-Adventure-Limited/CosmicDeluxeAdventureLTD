@@ -9,11 +9,11 @@ namespace CosmicDeluxeAdventure.Model
   public class Location
   {
     [Required]
-    int ID { get; set; }
+    public int ID { get; set; }
     [Required]
-    string Name { get; set; }
+    public string Name { get; set; }
     [Required]
-    string Description { get; set; }
+    public string Description { get; set; }
   }
 }
 
