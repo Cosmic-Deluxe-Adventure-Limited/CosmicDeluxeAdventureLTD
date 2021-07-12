@@ -15,8 +15,7 @@ namespace CosmicDeluxeAdventure.Model
     [Required]
     public DateTime Arrival { get; set; }
     [Required]
-
-    public string Status { get; set; }
+    public int Status { get; set; }
     [Required]
     public long Miles { get; set; }
     //FK

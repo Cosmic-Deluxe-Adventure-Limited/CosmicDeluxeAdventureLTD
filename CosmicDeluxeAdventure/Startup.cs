@@ -35,6 +35,8 @@ namespace CosmicDeluxeAdventure
 
       
       services.AddTransient<IUserInfo, UserInfoRepository>();
+      services.AddTransient<IFlight, FlightRepository>();
+
       // In production, the React files will be served from this directory
       services.AddSpaStaticFiles(configuration =>
       {

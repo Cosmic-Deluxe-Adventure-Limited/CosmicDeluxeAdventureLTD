@@ -24,6 +24,9 @@ const fetchData = async () => {
    // const data = await response.json();
     let jsonSampleData = [{ "id": 1, "firstName": "Fox", "lastName": "McCloud", "address": "1234 Corneria Way", "city": "Imperial Base", "state": "Alpha", "zipCode": 12345, "country": "Corneria", "phoneNumber": 1112223333, "userName": "barrelRoll1" }]
     console.log(jsonSampleData);
+    const flightResponse = await fetch('home/flights/getFlight/1');
+    const flightRespData = await flightResponse.json();
+    console.log(flightResponse);
 }
 
 

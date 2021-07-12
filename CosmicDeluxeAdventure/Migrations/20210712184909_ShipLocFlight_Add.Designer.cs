@@ -4,14 +4,16 @@ using CosmicDeluxeAdventure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CosmicDeluxeAdventure.Migrations
 {
     [DbContext(typeof(CADDbContext))]
-    partial class CADDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210712184909_ShipLocFlight_Add")]
+    partial class ShipLocFlight_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
