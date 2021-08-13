@@ -10,18 +10,16 @@ namespace CosmicDeluxeAdventure.Model
   {
     [Required]
     public int ID { get; set; }
-    public int FlightID { get; set; }
-    public DateTime DepartDate { get; set; }
-    public DateTime ArrivalDate { get; set; }
-    public int FlightNumber { get; set; }
-    public int ShipId { get; set; }
-    public string Destination { get; set; }
-    public string Departure { get; set; }
-    public decimal Distance { get; set;}
-
-    //Navigation Properties
-    public List<Ship> Ship { get; set; }
-    public List<SeatInfo> Trips { get; set; }
-
+    [Required]
+    public DateTime Departure { get; set; }
+    [Required]
+    public DateTime Arrival { get; set; }
+    [Required]
+    public int Status { get; set; }
+    [Required]
+    public long Miles { get; set; }
+    //FK
+    public Ship ShipId { get; set; }
+    public Location Location {get; set;}
   }
 }

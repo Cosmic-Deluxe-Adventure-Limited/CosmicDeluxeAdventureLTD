@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CosmicDeluxeAdventure.Model
 {
-  public class Ship
+  public class Location
   {
     [Required]
     public int ID { get; set; }
@@ -14,7 +14,6 @@ namespace CosmicDeluxeAdventure.Model
     public string Name { get; set; }
     [Required]
     public string Description { get; set; }
-    // Add Congifuration At some point
-
   }
 }
+

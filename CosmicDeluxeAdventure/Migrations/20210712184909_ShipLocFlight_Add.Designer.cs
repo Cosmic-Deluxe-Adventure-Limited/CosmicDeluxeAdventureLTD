@@ -4,14 +4,16 @@ using CosmicDeluxeAdventure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CosmicDeluxeAdventure.Migrations
 {
     [DbContext(typeof(CADDbContext))]
-    partial class CADDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210712184909_ShipLocFlight_Add")]
+    partial class ShipLocFlight_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,19 +172,6 @@ namespace CosmicDeluxeAdventure.Migrations
                             State = "Alpha",
                             UserName = "barrelRoll1",
                             ZipCode = 12345
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Address = "SR388",
-                            City = "Ancient City",
-                            Country = "Zebes",
-                            FirstName = "Samus",
-                            LastName = "Aran",
-                            PhoneNumber = 1234567890,
-                            State = "Unknown",
-                            UserName = "lastMet2",
-                            ZipCode = 0
                         });
                 });
 
