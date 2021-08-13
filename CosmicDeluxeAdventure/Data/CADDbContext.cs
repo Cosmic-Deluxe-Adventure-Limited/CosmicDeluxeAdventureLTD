@@ -54,6 +54,18 @@ namespace CosmicDeluxeAdventure.Data
           Country = "Corneria",
           PhoneNumber = 1112223333,
           UserName = "barrelRoll1"
+        },
+        new UserInfo{
+          ID = 2,
+          FirstName = "Samus",
+          LastName = "Aran",
+          Address = "SR388",
+          City = "Ancient City",
+          State = "Unknown",
+          ZipCode = 00000,
+          Country = "Zebes",
+          PhoneNumber = 1234567890,
+          UserName = "lastMet2"
         });
     }
   }
