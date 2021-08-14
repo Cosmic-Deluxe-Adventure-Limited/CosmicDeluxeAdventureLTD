@@ -23,19 +23,6 @@ namespace CosmicDeluxeAdventure.Controllers
       _logger = logger;
       _userInfo = userinfo;
       _flight = flight;
-    }
-    [Route("getAllFlights")]
-    [HttpGet]
-    public async Task<IEnumerable<Flight>> Get()
-    {
-      Debug.WriteLine("GetData Hit");
-      return await _flight.GetAllFlights();
-    }
-    [Route("getflight/{id}")]
-    [HttpGet]
-    public async Task<Flight> GetFlight(int id)
-    {      
-      return await _flight.GetFlight(id);
-    }
+    }    
   }
 }

@@ -11,11 +11,11 @@ const Flights = (props) => {
         fetchData();
     }, []);    
     const fetchData = () => {        
-   fetch('home/api/getFlight/1')
+   fetch('api/Flight/getFlight/1')
         .then(data => data.json())
         .then(data => setFlightData(data))
         .catch(err => console.log(err));
-    fetch('home/api/getAllFlights')
+    fetch('api/Flight/getAllFlights')
         .then(data => data.json())
         .then(data => setallFlights(data))   
     }    
