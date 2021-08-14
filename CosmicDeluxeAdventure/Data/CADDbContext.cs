@@ -39,8 +39,17 @@ namespace CosmicDeluxeAdventure.Data
           ID = 1,
           Departure = DateTime.Parse("10/23/2022 07:56:00"),
           Arrival = DateTime.Parse("10/23/2022 23:10:00"),
-          Status = (int)Status.OnTime
-        });
+          Status = (int)Status.OnTime,
+          Miles=1000000
+        },
+      new Flight
+      {
+        ID = 2,
+        Departure = DateTime.Parse("11/30/2023 10:10:00"),
+        Arrival = DateTime.Parse("12/02/2023 14:00:00"),
+        Status = (int)Status.Delayed,
+        Miles = 2309847123
+      });
       modelBuilder.Entity<UserInfo>().HasData(
         new UserInfo
         {

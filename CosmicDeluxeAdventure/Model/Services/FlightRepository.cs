@@ -23,9 +23,9 @@ namespace CosmicDeluxeAdventure.Model.Services
     {
       return await _context.Flight.FindAsync(id);
     }
-    public async Task<Flight> GetFirstFlight()
+    public async Task<List<Flight>> GetAllFlights()
     {
-      return await _context.Flight.FirstOrDefaultAsync();
+      return await _context.Flight.ToListAsync();
     }
   }
 }

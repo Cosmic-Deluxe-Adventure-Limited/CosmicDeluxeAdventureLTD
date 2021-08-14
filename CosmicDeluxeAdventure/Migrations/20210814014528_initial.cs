@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CosmicDeluxeAdventure.Migrations
 {
-    public partial class ShipLocFlight_Add : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,6 +33,27 @@ namespace CosmicDeluxeAdventure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ship", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserInfo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<int>(type: "int", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserInfo", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,7 +89,11 @@ namespace CosmicDeluxeAdventure.Migrations
             migrationBuilder.InsertData(
                 table: "Flight",
                 columns: new[] { "ID", "Arrival", "Departure", "LocationID", "Miles", "ShipIdID", "Status" },
-                values: new object[] { 1, new DateTime(2022, 10, 23, 23, 10, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 10, 23, 7, 56, 0, 0, DateTimeKind.Unspecified), null, 0L, null, 1 });
+                values: new object[,]
+                {
+                    { 1, new DateTime(2022, 10, 23, 23, 10, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 10, 23, 7, 56, 0, 0, DateTimeKind.Unspecified), null, 1000000L, null, 1 },
+                    { 2, new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 11, 30, 10, 10, 0, 0, DateTimeKind.Unspecified), null, 2309847123L, null, 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Location",
@@ -79,6 +104,15 @@ namespace CosmicDeluxeAdventure.Migrations
                 table: "Ship",
                 columns: new[] { "ID", "Description", "Name" },
                 values: new object[] { 1, "First and the finest of the Adventure Class Ships.", "Orbital Horizons" });
+
+            migrationBuilder.InsertData(
+                table: "UserInfo",
+                columns: new[] { "ID", "Address", "City", "Country", "FirstName", "LastName", "PhoneNumber", "State", "UserName", "ZipCode" },
+                values: new object[,]
+                {
+                    { 1, "1234 Corneria Way", "Imperial Base", "Corneria", "Fox", "McCloud", 1112223333, "Alpha", "barrelRoll1", 12345 },
+                    { 2, "SR388", "Ancient City", "Zebes", "Samus", "Aran", 1234567890, "Unknown", "lastMet2", 0 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Flight_LocationID",
@@ -95,6 +129,9 @@ namespace CosmicDeluxeAdventure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Flight");
+
+            migrationBuilder.DropTable(
+                name: "UserInfo");
 
             migrationBuilder.DropTable(
                 name: "Location");

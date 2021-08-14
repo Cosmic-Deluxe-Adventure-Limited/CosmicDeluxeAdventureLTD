@@ -8,6 +8,6 @@ namespace CosmicDeluxeAdventure.Model.Interfaces
   public interface IFlight
   {
     public Task<Flight> GetFlight(int id);
-    public Task<Flight> GetFirstFlight();
+    public Task<List<Flight>> GetAllFlights();
   }
 }

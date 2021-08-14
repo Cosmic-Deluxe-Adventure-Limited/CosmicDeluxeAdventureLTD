@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosmicDeluxeAdventure.Migrations
 {
     [DbContext(typeof(CADDbContext))]
-    [Migration("20210712184909_ShipLocFlight_Add")]
-    partial class ShipLocFlight_Add
+    [Migration("20210814014528_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,8 +60,16 @@ namespace CosmicDeluxeAdventure.Migrations
                             ID = 1,
                             Arrival = new DateTime(2022, 10, 23, 23, 10, 0, 0, DateTimeKind.Unspecified),
                             Departure = new DateTime(2022, 10, 23, 7, 56, 0, 0, DateTimeKind.Unspecified),
-                            Miles = 0L,
+                            Miles = 1000000L,
                             Status = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Arrival = new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2023, 11, 30, 10, 10, 0, 0, DateTimeKind.Unspecified),
+                            Miles = 2309847123L,
+                            Status = 2
                         });
                 });
 
@@ -172,6 +180,19 @@ namespace CosmicDeluxeAdventure.Migrations
                             State = "Alpha",
                             UserName = "barrelRoll1",
                             ZipCode = 12345
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Address = "SR388",
+                            City = "Ancient City",
+                            Country = "Zebes",
+                            FirstName = "Samus",
+                            LastName = "Aran",
+                            PhoneNumber = 1234567890,
+                            State = "Unknown",
+                            UserName = "lastMet2",
+                            ZipCode = 0
                         });
                 });
 

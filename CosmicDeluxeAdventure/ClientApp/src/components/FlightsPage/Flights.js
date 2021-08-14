@@ -1,33 +1,30 @@
 import React,  {useEffect } from 'react';
 import { useState } from 'react';
 import { Card } from 'react-bootstrap';
-//import superagent from 'superagent';
-
-
- 
+import FlightInformation from '../FlightsPage/FlightInformation'
 
 const Flights = (props) => {
 
     const [flightData, setFlightData] = useState({});
-    const [allUsers, setAllUsers] = useState([]);
+    const [allFlights, setallFlights] = useState([]);
     useEffect(() => {
         fetchData();
     }, []);    
-const fetchData = () => {        
-    const flightResponse = fetch('home/flights/getFlight/1')
+    const fetchData = () => {        
+   fetch('home/api/getFlight/1')
         .then(data => data.json())
         .then(data => setFlightData(data))
-        .catch(err => console.log(err));   
-    return flightResponse;
+        .catch(err => console.log(err));
+    fetch('home/api/getAllFlights')
+        .then(data => data.json())
+        .then(data => setallFlights(data))   
     }    
-    return (        
+    console.log('allFlights', allFlights);
+   
+    return (
         <>
-            <h1>{flightData.arrival}</h1>
-        <Card>
-            <Card.Body>Show me the flight options page</Card.Body>
-
-            </Card>
-            </>
+            {(allFlights.length > 0) ? allFlights.forEach(fL => <FlightInformation flights={fL} key={fL.id} />) : <h1></h1>}
+        </>
     );
     
 }

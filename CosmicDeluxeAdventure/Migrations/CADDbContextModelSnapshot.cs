@@ -58,8 +58,16 @@ namespace CosmicDeluxeAdventure.Migrations
                             ID = 1,
                             Arrival = new DateTime(2022, 10, 23, 23, 10, 0, 0, DateTimeKind.Unspecified),
                             Departure = new DateTime(2022, 10, 23, 7, 56, 0, 0, DateTimeKind.Unspecified),
-                            Miles = 0L,
+                            Miles = 1000000L,
                             Status = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Arrival = new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2023, 11, 30, 10, 10, 0, 0, DateTimeKind.Unspecified),
+                            Miles = 2309847123L,
+                            Status = 2
                         });
                 });
 

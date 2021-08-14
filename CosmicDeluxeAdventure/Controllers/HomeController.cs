@@ -23,14 +23,14 @@ namespace CosmicDeluxeAdventure.Controllers
       _userInfo = userinfo;
       _flight = flight;
     }
-    [Route("{controller}/server/GetAllUsers")]
+    [Route("{controller}/api/getAllFlights")]
     [HttpGet]
-    public async Task<IEnumerable<UserInfo>> Get()
+    public async Task<IEnumerable<Flight>> Get()
     {
       Debug.WriteLine("GetData Hit");
-      return await _userInfo.GetAllUsers();
+      return await _flight.GetAllFlights();
     }
-    [Route("{controller}/flights/getflight/{id}")]
+    [Route("{controller}/api/getflight/{id}")]
     [HttpGet]
     public async Task<Flight> GetFlight(int id)
     {
