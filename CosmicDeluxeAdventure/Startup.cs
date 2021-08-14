@@ -32,8 +32,9 @@ namespace CosmicDeluxeAdventure
         options.UseSqlServer(connectionString);
       });
       services.AddMvc();
-
-      
+      //Swagger UI - Comment to disable Swagger
+      services.AddSwaggerGen();
+      //      
       services.AddTransient<IUserInfo, UserInfoRepository>();
       services.AddTransient<IFlight, FlightRepository>();
 
@@ -59,9 +60,22 @@ namespace CosmicDeluxeAdventure
       }
 
       app.UseHttpsRedirection();
+      
       app.UseStaticFiles();
-      app.UseSpaStaticFiles();
-
+      //DISABLED REACT FRONTEND
+      //app.UseSpaStaticFiles();
+      //Comment Block to Disable Swagger
+      app.UseSwagger(//options =>
+      //{
+        //options.RouteTemplate = "{documentName}/swagger.json";
+      //}
+      );
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
+        c.RoutePrefix = string.Empty;
+      });
+      //
       app.UseRouting();
 
       app.UseEndpoints(endpoints =>
@@ -70,16 +84,16 @@ namespace CosmicDeluxeAdventure
                   name: "default",
                   pattern: "{controller}/{action=Index}/{id?}");
       });
+      //DISABLED REACT FRONTEND
+      //app.UseSpa(spa =>
+      //{
+      //  spa.Options.SourcePath = "ClientApp";
 
-      app.UseSpa(spa =>
-      {
-        spa.Options.SourcePath = "ClientApp";
-
-        if (env.IsDevelopment())
-        {
-          spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-        }
-      });
+      //  if (env.IsDevelopment())
+      //  {
+      //    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+      //  }
+      //});
     }
   }
 }

@@ -11,6 +11,7 @@ using System.Diagnostics;
 
 namespace CosmicDeluxeAdventure.Controllers
 {
+  [Route("api/home")]
   [ApiController]
   public class HomeController : ControllerBase //Inherit from Controller supports views.  ControllerBase does not support views
   {
@@ -23,26 +24,17 @@ namespace CosmicDeluxeAdventure.Controllers
       _userInfo = userinfo;
       _flight = flight;
     }
-    [Route("{controller}/api/getAllFlights")]
+    [Route("getAllFlights")]
     [HttpGet]
     public async Task<IEnumerable<Flight>> Get()
     {
       Debug.WriteLine("GetData Hit");
       return await _flight.GetAllFlights();
     }
-    [Route("{controller}/api/getflight/{id}")]
+    [Route("getflight/{id}")]
     [HttpGet]
     public async Task<Flight> GetFlight(int id)
-    {
-      //let flightData = {
-      //    arrival: "2022-10-23T23:10:00",
-      //    departure: "2022-10-23T07:56:00",
-      //    id: 1,
-      //    location: null,
-      //    miles: 0,
-      //    shipId: null,
-      //    status: 1
-      //};
+    {      
       return await _flight.GetFlight(id);
     }
   }
