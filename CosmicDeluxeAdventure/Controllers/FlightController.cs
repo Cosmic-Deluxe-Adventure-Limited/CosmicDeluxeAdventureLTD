@@ -37,8 +37,17 @@ namespace CosmicDeluxeAdventure.Controllers
     {
       return await _flight.GetFlight(id);
     }
-
-
+    [Route("updateFlight/{id}")]
+    [HttpPut]
+    public async Task<IActionResult> UpdateFlight(int id, Flight flight)
+    {
+      if(id != flight.ID)
+      {
+        return BadRequest();
+      }
+      var updatedFlight = await _flight.UpdateFlight(id, flight);
+      return Ok(updatedFlight);
+    }
 
   }
 }

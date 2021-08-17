@@ -9,5 +9,6 @@ namespace CosmicDeluxeAdventure.Model.Interfaces
   {
     public Task<Flight> GetFlight(int id);
     public Task<List<Flight>> GetAllFlights();
+    public Task<Flight> UpdateFlight(int flightId, Flight flight);
   }
 }

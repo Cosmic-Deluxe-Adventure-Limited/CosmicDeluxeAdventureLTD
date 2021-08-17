@@ -14,7 +14,7 @@ namespace CosmicDeluxeAdventure.Model
     public string Name { get; set; }
     [Required]
     public string Description { get; set; }
-    // Add Congifuration At some point
+    // Add Configuration At some point
 
   }
 }

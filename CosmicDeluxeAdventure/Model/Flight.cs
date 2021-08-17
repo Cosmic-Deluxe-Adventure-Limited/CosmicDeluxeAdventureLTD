@@ -18,8 +18,11 @@ namespace CosmicDeluxeAdventure.Model
     public int Status { get; set; }
     [Required]
     public long Miles { get; set; }
+    [Required]
+    public int ShipId { get; set; }    
+    public int LocationId { get; set; }
     //FK
-    public Ship ShipId { get; set; }
+    public Ship Ship { get; set; }
     public Location Location {get; set;}
   }
 }

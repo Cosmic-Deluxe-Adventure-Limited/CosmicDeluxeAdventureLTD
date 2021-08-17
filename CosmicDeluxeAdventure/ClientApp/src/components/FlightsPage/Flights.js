@@ -1,6 +1,9 @@
 import React,  {useEffect } from 'react';
 import { useState } from 'react';
-import { Card } from 'react-bootstrap';
+
+import CardGroup from 'react-bootstrap/CardGroup';
+import Jumbotron from 'react-bootstrap/Jumbotron'
+//import { Card } from 'react-bootstrap';
 import FlightInformation from '../FlightsPage/FlightInformation'
 
 const Flights = (props) => {
@@ -23,7 +26,13 @@ const Flights = (props) => {
    
     return (
         <>
-            {(allFlights.length > 0) ? allFlights.forEach(fL => <FlightInformation flights={fL} key={fL.id} />) : <h1></h1>}
+            <Jumbotron>
+            <h1>We offer the adventure of a lifetime!</h1>            
+            </Jumbotron>
+            <CardGroup>
+            {(allFlights.length > 0) ? allFlights.map(fl => <FlightInformation key={fl.id} flight={fl} />) :
+            <h1>No Flight Information</h1>}
+            </CardGroup>
         </>
     );
     

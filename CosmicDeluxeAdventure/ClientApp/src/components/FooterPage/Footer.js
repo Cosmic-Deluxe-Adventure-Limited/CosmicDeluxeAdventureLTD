@@ -10,8 +10,8 @@ import '../FooterPage/Footer.scss';
 
 const Footer = () => {
   return (
-    <div className="Footer" >
-      <footer>
+    //<div className="Footer">
+      <footer className="bg-secondary">
           <h2>Lets Travel To Space Together</h2>
           <h4>About Cosmic Deluxe Adventure Limited</h4>
           <h4>Space Service</h4>
@@ -42,7 +42,7 @@ const Footer = () => {
           <p>&copy; 2021 Cosmic Deluxe Adventure Limited. All rights reserved.</p>
 
       </footer>
-    </div>
+    //</div>
   );
 }
 

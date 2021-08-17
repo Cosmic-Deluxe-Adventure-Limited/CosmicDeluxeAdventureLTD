@@ -35,8 +35,8 @@ namespace CosmicDeluxeAdventure
       //Swagger UI - Comment to disable Swagger
       services.AddSwaggerGen();
       //      
-      services.AddTransient<IUserInfo, UserInfoRepository>();
-      services.AddTransient<IFlight, FlightRepository>();
+      services.AddTransient<IUserInfo, UserInfoService>();
+      services.AddTransient<IFlight, FlightService>();
 
       // In production, the React files will be served from this directory
       services.AddSpaStaticFiles(configuration =>
@@ -63,17 +63,17 @@ namespace CosmicDeluxeAdventure
       
       app.UseStaticFiles();
       //REACT FRONTEND
-      app.UseSpaStaticFiles();
+      //app.UseSpaStaticFiles();
       //END REACT BLOCK
       //Comment Block to Disable Swagger
-      //app.UseSwagger(//options =>
-      
-      //);
-      //app.UseSwaggerUI(c =>
-      //{
-      //  c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
-      //  c.RoutePrefix = string.Empty;
-      //});
+      app.UseSwagger(//options =>
+
+      );
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
+        c.RoutePrefix = string.Empty;
+      });
       // END SWAGGER BLOCK
       app.UseRouting();
 
@@ -84,16 +84,16 @@ namespace CosmicDeluxeAdventure
                   pattern: "{controller}/{action=Index}/{id?}");
       });
       //REACT FRONTEND
-      app.UseSpa(spa =>
-      {
-        spa.Options.SourcePath = "ClientApp";
+      //app.UseSpa(spa =>
+      //{
+      //  spa.Options.SourcePath = "ClientApp";
 
-        if (env.IsDevelopment())
-        {
-          spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-        }
-      });
-     // END REACT BLOCK
+      //  if (env.IsDevelopment())
+      //  {
+      //    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+      //  }
+      //});
+      // END REACT BLOCK
     }
   }
 }

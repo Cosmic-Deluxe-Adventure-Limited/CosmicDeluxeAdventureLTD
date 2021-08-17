@@ -32,13 +32,13 @@ namespace CosmicDeluxeAdventure.Migrations
                     b.Property<DateTime>("Departure")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LocationID")
+                    b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<long>("Miles")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("ShipIdID")
+                    b.Property<int>("ShipId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -46,9 +46,9 @@ namespace CosmicDeluxeAdventure.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("LocationID");
+                    b.HasIndex("LocationId");
 
-                    b.HasIndex("ShipIdID");
+                    b.HasIndex("ShipId");
 
                     b.ToTable("Flight");
 
@@ -58,7 +58,9 @@ namespace CosmicDeluxeAdventure.Migrations
                             ID = 1,
                             Arrival = new DateTime(2022, 10, 23, 23, 10, 0, 0, DateTimeKind.Unspecified),
                             Departure = new DateTime(2022, 10, 23, 7, 56, 0, 0, DateTimeKind.Unspecified),
+                            LocationId = 2,
                             Miles = 1000000L,
+                            ShipId = 3,
                             Status = 1
                         },
                         new
@@ -66,7 +68,19 @@ namespace CosmicDeluxeAdventure.Migrations
                             ID = 2,
                             Arrival = new DateTime(2023, 12, 2, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             Departure = new DateTime(2023, 11, 30, 10, 10, 0, 0, DateTimeKind.Unspecified),
+                            LocationId = 1,
                             Miles = 2309847123L,
+                            ShipId = 2,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Arrival = new DateTime(2024, 2, 22, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            Departure = new DateTime(2024, 1, 10, 10, 10, 0, 0, DateTimeKind.Unspecified),
+                            LocationId = 3,
+                            Miles = 2309847123L,
+                            ShipId = 1,
                             Status = 2
                         });
                 });
@@ -95,7 +109,19 @@ namespace CosmicDeluxeAdventure.Migrations
                         {
                             ID = 1,
                             Description = "Originally built as a science and exploration space.  Since the growth of inter-planetary travel has become the premier gateway to other planets",
-                            Name = "Internation Space Station"
+                            Name = "International Space Station"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Description = "It's our first and largest satellite, tidally locked for a perfect view of earth",
+                            Name = "Moon"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Description = "It's red, and windy.  Perfect for that wonder desert getaway!",
+                            Name = "Mars"
                         });
                 });
 
@@ -124,6 +150,18 @@ namespace CosmicDeluxeAdventure.Migrations
                             ID = 1,
                             Description = "First and the finest of the Adventure Class Ships.",
                             Name = "Orbital Horizons"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Description = "Second Adventure Class Ship with bigger boosters.",
+                            Name = "Terminal Velocity"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Description = "Third Adventure Class Ship to get you to the moon in luxury",
+                            Name = "Lunar Bliss"
                         });
                 });
 
@@ -198,15 +236,19 @@ namespace CosmicDeluxeAdventure.Migrations
                 {
                     b.HasOne("CosmicDeluxeAdventure.Model.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationID");
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("CosmicDeluxeAdventure.Model.Ship", "ShipId")
+                    b.HasOne("CosmicDeluxeAdventure.Model.Ship", "Ship")
                         .WithMany()
-                        .HasForeignKey("ShipIdID");
+                        .HasForeignKey("ShipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Location");
 
-                    b.Navigation("ShipId");
+                    b.Navigation("Ship");
                 });
 #pragma warning restore 612, 618
         }
