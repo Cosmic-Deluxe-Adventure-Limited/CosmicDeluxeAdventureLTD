@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\SampleJsonData\" />
     <Folder Include="ClientApp\src\components\NewFolder\" />
   </ItemGroup>
 

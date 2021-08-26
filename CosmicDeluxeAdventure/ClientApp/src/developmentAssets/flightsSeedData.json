@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "departure": "2022-10-23T07:56:00",
+    "arrival": "2022-10-23T23:10:00",
+    "status": 1,
+    "miles": 1000000,
+    "shipId": 3,
+    "locationId": 2,
+    "ship": {
+      "id": 3,
+      "name": "Lunar Blissful Travels",
+      "description": "Third Adventure Class Ship to get you to the moon in luxury"
+    },
+    "location": {
+      "id": 2,
+      "name": "Moon",
+      "description": "It's our first and largest satellite, tidally locked for a perfect view of earth"
+    }
+  },
+  {
+    "id": 2,
+    "departure": "2023-11-30T10:10:00",
+    "arrival": "2023-12-02T14:00:00",
+    "status": 2,
+    "miles": 2309847123,
+    "shipId": 2,
+    "locationId": 1,
+    "ship": {
+      "id": 2,
+      "name": "Terminal Velocity",
+      "description": "Second Adventure Class Ship with bigger boosters."
+    },
+    "location": {
+      "id": 1,
+      "name": "International Space Station",
+      "description": "Originally built as a science and exploration space.  Since the growth of inter-planetary travel has become the premier gateway to other planets"
+    }
+  },
+  {
+    "id": 3,
+    "departure": "2024-01-10T10:10:00",
+    "arrival": "2024-02-22T16:00:00",
+    "status": 2,
+    "miles": 2309847123,
+    "shipId": 1,
+    "locationId": 3,
+    "ship": {
+      "id": 1,
+      "name": "Orbital Horizons",
+      "description": "First and the finest of the Adventure Class Ships."
+    },
+    "location": {
+      "id": 3,
+      "name": "Mars",
+      "description": "It's red, and windy.  Perfect for that wonder desert getaway!"
+    }
+  }
+]

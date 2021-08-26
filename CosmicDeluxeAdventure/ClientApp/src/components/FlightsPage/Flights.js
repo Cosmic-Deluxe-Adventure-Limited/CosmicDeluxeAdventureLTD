@@ -5,23 +5,34 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 //import { Card } from 'react-bootstrap';
 import FlightInformation from '../FlightsPage/FlightInformation'
+import FlighSampleArrayJSON from '../../developmentAssets/flightsSeedData.json';
 
 const Flights = (props) => {
 
     const [flightData, setFlightData] = useState({});
     const [allFlights, setallFlights] = useState([]);
+
+    //Use this to turn on and off the fetch/sample JSON data.
+    const [apiCall, setApiCall] = useState(false);
     useEffect(() => {
         fetchData();
     }, []);    
-    const fetchData = () => {        
-   fetch('api/Flight/getFlight/1')
-        .then(data => data.json())
-        .then(data => setFlightData(data))
-        .catch(err => console.log(err));
-    fetch('api/Flight/getAllFlights')
-        .then(data => data.json())
-        .then(data => setallFlights(data))   
-    }    
+    const fetchData = () => {
+        if (!apiCall) {
+            console.log('true to form');
+            console.log("flightSampleJSON", FlighSampleArrayJSON);
+            setallFlights(FlighSampleArrayJSON);
+        }
+        if (apiCall) {
+            fetch('api/Flight/getFlight/1')
+                .then(data => data.json())
+                .then(data => setFlightData(data))
+                .catch(err => console.log(err));
+            fetch('api/Flight/getAllFlights')
+                .then(data => data.json())
+                .then(data => setallFlights(data))
+        }
+    }
     console.log('allFlights', allFlights);
    
     return (

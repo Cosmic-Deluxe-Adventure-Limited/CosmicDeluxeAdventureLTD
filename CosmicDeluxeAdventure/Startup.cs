@@ -15,10 +15,12 @@ namespace CosmicDeluxeAdventure
   public class Startup
   {
     public IConfiguration Configuration { get; }
+    private bool _startReact = true;
     public Startup(IConfiguration configuration)
     {
-      Configuration = configuration;
+      Configuration = configuration;      
     }
+    
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -63,17 +65,23 @@ namespace CosmicDeluxeAdventure
       
       app.UseStaticFiles();
       //REACT FRONTEND
-      //app.UseSpaStaticFiles();
+      if (_startReact)
+      {
+        app.UseSpaStaticFiles();
+      }
       //END REACT BLOCK
       //Comment Block to Disable Swagger
-      app.UseSwagger(//options =>
-
-      );
-      app.UseSwaggerUI(c =>
+      else
       {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
-        c.RoutePrefix = string.Empty;
-      });
+        app.UseSwagger(//options =>
+
+        );
+        app.UseSwaggerUI(c =>
+        {
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
+          c.RoutePrefix = string.Empty;
+        });
+      }
       // END SWAGGER BLOCK
       app.UseRouting();
 
@@ -84,15 +92,18 @@ namespace CosmicDeluxeAdventure
                   pattern: "{controller}/{action=Index}/{id?}");
       });
       //REACT FRONTEND
-      //app.UseSpa(spa =>
-      //{
-      //  spa.Options.SourcePath = "ClientApp";
+      if (_startReact)
+      {
+        app.UseSpa(spa =>
+        {
+          spa.Options.SourcePath = "ClientApp";
 
-      //  if (env.IsDevelopment())
-      //  {
-      //    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-      //  }
-      //});
+          if (env.IsDevelopment())
+          {
+            spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+          }
+        });
+      }
       // END REACT BLOCK
     }
   }
