@@ -3,6 +3,7 @@ using CosmicDeluxeAdventure.Model.Interfaces;
 using CosmicDeluxeAdventure.Model.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 //Needed for database (install NUGET)
 using Microsoft.EntityFrameworkCore;
 //
@@ -100,7 +101,9 @@ namespace CosmicDeluxeAdventure
 
           if (env.IsDevelopment())
           {
-            spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            //Use if needed to manually start the React Server First.
+            //spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            spa.UseReactDevelopmentServer(npmScript: "start");
           }
         });
       }
