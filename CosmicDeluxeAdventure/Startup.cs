@@ -1,7 +1,8 @@
 using CosmicDeluxeAdventure.Data;
+using CosmicDeluxeAdventure.Model.Interfaces;
+using CosmicDeluxeAdventure.Model.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 //Needed for database (install NUGET)
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +15,13 @@ namespace CosmicDeluxeAdventure
 {
   public class Startup
   {
-    public IConfiguration Configuration {get;}
+    public IConfiguration Configuration { get; }
+    private bool _startReact = true;
     public Startup(IConfiguration configuration)
     {
-      Configuration = configuration;
-    }   
+      Configuration = configuration;      
+    }
+    
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -27,8 +30,16 @@ namespace CosmicDeluxeAdventure
       services.AddControllersWithViews();
       //Initial DB setup
       services.AddDbContext<CADDbContext>(options =>
-      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-      );
+      {
+        string connectionString = Configuration.GetConnectionString("DefaultConnection");
+        options.UseSqlServer(connectionString);
+      });
+      services.AddMvc();
+      //Swagger UI - Comment to disable Swagger
+      services.AddSwaggerGen();
+      //      
+      services.AddTransient<IUserInfo, UserInfoService>();
+      services.AddTransient<IFlight, FlightService>();
 
       // In production, the React files will be served from this directory
       services.AddSpaStaticFiles(configuration =>
@@ -52,9 +63,27 @@ namespace CosmicDeluxeAdventure
       }
 
       app.UseHttpsRedirection();
+      
       app.UseStaticFiles();
-      app.UseSpaStaticFiles();
+      //REACT FRONTEND
+      if (_startReact)
+      {
+        app.UseSpaStaticFiles();
+      }
+      //END REACT BLOCK
+      //Comment Block to Disable Swagger
+      else
+      {
+        app.UseSwagger(//options =>
 
+        );
+        app.UseSwaggerUI(c =>
+        {
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cosmic Adventure Deluxe V0.1");
+          c.RoutePrefix = string.Empty;
+        });
+      }
+      // END SWAGGER BLOCK
       app.UseRouting();
 
       app.UseEndpoints(endpoints =>
@@ -63,18 +92,23 @@ namespace CosmicDeluxeAdventure
                   name: "default",
                   pattern: "{controller}/{action=Index}/{id?}");
       });
-
-      app.UseSpa(spa =>
+      //REACT FRONTEND
+      if (_startReact)
       {
-        spa.Options.SourcePath = "ClientApp";
-
-        if (env.IsDevelopment())
+        app.UseSpa(spa =>
         {
-          spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-        }
-      });
+          spa.Options.SourcePath = "ClientApp";
+
+          if (env.IsDevelopment())
+          {
+            //Use if needed to manually start the React Server First.
+            //spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            spa.UseReactDevelopmentServer(npmScript: "start");
+          }
+        });
+      }
+      // END REACT BLOCK
     }
   }
 }
 
-      

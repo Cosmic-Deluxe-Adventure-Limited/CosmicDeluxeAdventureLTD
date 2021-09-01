@@ -9,7 +9,7 @@ import CustomerSupport from './components/CustomerSupportPage/CustomerSupport';
 import Trips from './components/TripsPage/TripsPage';
 import Home  from './components/HomeLandingPage/HomePage';
 import Footer from './components/FooterPage/Footer';
-
+import Signup from './components/Signup/Signup';
 
 
 
@@ -18,6 +18,7 @@ function App () {
   return (
           <>
        <NavBar />
+       {/* <Home/> */}
        <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/Flights' component={Flights} />
@@ -26,6 +27,7 @@ function App () {
         <Route exact path='/Deals' component={Deals} />
         <Route exact path='/CustomerSupport' component={CustomerSupport} />
         <Route exact path='/Trips' component={Trips} />
+        <Route exact path='/Signup' component={Signup} />
       </Switch>
      <Footer/>        
       </>
