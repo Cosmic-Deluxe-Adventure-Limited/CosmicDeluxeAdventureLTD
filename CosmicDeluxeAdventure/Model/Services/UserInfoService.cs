@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmicDeluxeAdventure.Model.Services
 {
-  public class UserInfoRepository : IUserInfo
+  public class UserInfoService : IUserInfo
   {
     private IUserInfo userInfo;
     private CADDbContext _context;
-    public UserInfoRepository(CADDbContext context)
+    public UserInfoService(CADDbContext context)
     {
       _context = context;
     }

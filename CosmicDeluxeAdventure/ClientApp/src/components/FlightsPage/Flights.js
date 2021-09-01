@@ -1,41 +1,52 @@
 import React,  {useEffect } from 'react';
-//import { useState } from 'react';
-import { Card } from 'react-bootstrap';
-//import superagent from 'superagent';
+import { useState } from 'react';
 
+import CardGroup from 'react-bootstrap/CardGroup';
+import Jumbotron from 'react-bootstrap/Jumbotron'
+//import { Card } from 'react-bootstrap';
+import FlightInformation from '../FlightsPage/FlightInformation'
+import FlighSampleArrayJSON from '../../developmentAssets/flightsSeedData.json';
 
-const Flights = () => {
+const Flights = (props) => {
+
+    const [flightData, setFlightData] = useState({});
+    const [allFlights, setallFlights] = useState([]);
+
+    //Use this to turn on and off the fetch/sample JSON data.
+    const [apiCall, setApiCall] = useState(false);
     useEffect(() => {
         fetchData();
-    }, []);
-    //const [GetUserData, setUserData] = useState([]);
-    //let newUserData = superagent.get() 
-    
+    }, []);    
+    const fetchData = () => {
+        if (!apiCall) {
+            console.log('true to form');
+            console.log("flightSampleJSON", FlighSampleArrayJSON);
+            setallFlights(FlighSampleArrayJSON);
+        }
+        if (apiCall) {
+            fetch('api/Flight/getFlight/1')
+                .then(data => data.json())
+                .then(data => setFlightData(data))
+                .catch(err => console.log(err));
+            fetch('api/Flight/getAllFlights')
+                .then(data => data.json())
+                .then(data => setallFlights(data))
+        }
+    }
+    console.log('allFlights', allFlights);
+   
     return (
-        <Card>
-
-            <Card.Body>Show me the flight options page</Card.Body>
-
-    </Card>
+        <>
+            <Jumbotron>
+            <h1>We offer the adventure of a lifetime!</h1>            
+            </Jumbotron>
+            <CardGroup>
+            {(allFlights.length > 0) ? allFlights.map(fl => <FlightInformation key={fl.id} flight={fl} />) :
+            <h1>No Flight Information</h1>}
+            </CardGroup>
+        </>
     );
-}
-
-const fetchData = async () => {
-    //const response = await fetch('home/GetData');
-    //const data = await response.json();
-    //let jsonSampleData = [{ "id": 1, "firstName": "Fox", "lastName": "McCloud", "address": "1234 Corneria Way", "city": "Imperial Base", "state": "Alpha", "zipCode": 12345, "country": "Corneria", "phoneNumber": 1112223333, "userName": "barrelRoll1" }]
-    //console.log(jsonSampleData);
-    try {
-        const flightResponse = await fetch('home/flights/getFlight/1')
-            .then(resp => resp.json());
-        console.log(flightResponse);
-        //const flightRespData = await flightResponse.json();
-        //console.log(flightResponse);
-        //console.log(flightRespData);
-    }
-    catch (err) {
-        console.error('error fetching!', err);
-    }
+    
 }
 
 
