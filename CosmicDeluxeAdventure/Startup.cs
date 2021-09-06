@@ -36,7 +36,7 @@ namespace CosmicDeluxeAdventure
       });
       services.AddMvc();
       //Swagger UI - Comment to disable Swagger
-      services.AddSwaggerGen();
+      if (!_startReact) services.AddSwaggerGen();
       //      
       services.AddTransient<IUserInfo, UserInfoService>();
       services.AddTransient<IFlight, FlightService>();
