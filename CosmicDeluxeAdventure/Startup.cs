@@ -31,12 +31,12 @@ namespace CosmicDeluxeAdventure
       //Initial DB setup
       services.AddDbContext<CADDbContext>(options =>
       {
-        string connectionString = Configuration.GetConnectionString("DefaultConnection");
+        string connectionString = Configuration.GetConnectionString("ProductionConnection");
         options.UseSqlServer(connectionString);
       });
       services.AddMvc();
       //Swagger UI - Comment to disable Swagger
-      services.AddSwaggerGen();
+      if (!_startReact) services.AddSwaggerGen();
       //      
       services.AddTransient<IUserInfo, UserInfoService>();
       services.AddTransient<IFlight, FlightService>();
